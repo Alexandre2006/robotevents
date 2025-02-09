@@ -9,27 +9,17 @@ import 'package:robotevents/src/models/team.dart';
 
 class PageMeta {
   int currentPage;
-  String firstPageUrl;
   int from;
   int lastPage;
-  String lastPageUrl;
-  String nextPageUrl;
-  String path;
   int perPage;
-  String prevPageUrl;
   int to;
   int total;
 
   PageMeta({
     required this.currentPage,
-    required this.firstPageUrl,
     required this.from,
     required this.lastPage,
-    required this.lastPageUrl,
-    required this.nextPageUrl,
-    required this.path,
     required this.perPage,
-    required this.prevPageUrl,
     required this.to,
     required this.total,
   });
@@ -37,14 +27,9 @@ class PageMeta {
   factory PageMeta.fromJson(Map<String, dynamic> json) {
     return PageMeta(
       currentPage: json['current_page'],
-      firstPageUrl: json['first_page_url'],
       from: json['from'],
       lastPage: json['last_page'],
-      lastPageUrl: json['last_page_url'],
-      nextPageUrl: json['next_page_url'],
-      path: json['path'],
       perPage: json['per_page'],
-      prevPageUrl: json['prev_page_url'],
       to: json['to'],
       total: json['total'],
     );
