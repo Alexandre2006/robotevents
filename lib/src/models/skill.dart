@@ -1,40 +1,41 @@
 import 'package:robotevents/src/models/id_info.dart';
 
 class Skill {
-  int id;
-  IdInfo event;
-  IdInfo team;
-  SkillType type;
-  IdInfo season;
-  IdInfo division;
-  int rank;
-  int score;
-  int attempts;
+  int? id;
+  IdInfo? event;
+  IdInfo? team;
+  SkillType? type;
+  IdInfo? season;
+  IdInfo? division;
+  int? rank;
+  int? score;
+  int? attempts;
 
   Skill({
-    required this.id,
-    required this.event,
-    required this.team,
-    required this.type,
-    required this.season,
-    required this.division,
-    required this.rank,
-    required this.score,
-    required this.attempts,
+    this.id,
+    this.event,
+    this.team,
+    this.type,
+    this.season,
+    this.division,
+    this.rank,
+    this.score,
+    this.attempts,
   });
 
   factory Skill.fromJson(Map<String, dynamic> json) {
     return Skill(
       id: json['id'],
-      event: IdInfo.fromJson(json['event']),
-      team: IdInfo.fromJson(json['team']),
+      event: json['event'] != null ? IdInfo.fromJson(json['event']) : null,
+      team: json['team'] != null ? IdInfo.fromJson(json['team']) : null,
       type: json['type'] == 'driver'
           ? SkillType.driver
           : json['type'] == 'programming'
               ? SkillType.programming
               : SkillType.packageDeliveryTime,
-      season: IdInfo.fromJson(json['season']),
-      division: IdInfo.fromJson(json['division']),
+      season: json['season'] != null ? IdInfo.fromJson(json['season']) : null,
+      division:
+          json['division'] != null ? IdInfo.fromJson(json['division']) : null,
       rank: json['rank'],
       score: json['score'],
       attempts: json['attempts'],

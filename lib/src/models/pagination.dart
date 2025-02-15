@@ -8,20 +8,20 @@ import 'package:robotevents/src/models/skill.dart';
 import 'package:robotevents/src/models/team.dart';
 
 class PageMeta {
-  int currentPage;
-  int from;
-  int lastPage;
-  int perPage;
-  int to;
-  int total;
+  int? currentPage;
+  int? from;
+  int? lastPage;
+  int? perPage;
+  int? to;
+  int? total;
 
   PageMeta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   factory PageMeta.fromJson(Map<String, dynamic> json) {
@@ -37,149 +37,163 @@ class PageMeta {
 }
 
 class PaginatedTeam {
-  PageMeta meta;
-  List<Team> data;
+  PageMeta? meta;
+  List<Team>? data;
 
   PaginatedTeam({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedTeam.fromJson(Map<String, dynamic> json) {
     return PaginatedTeam(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<Team>.from(json['data'].map((team) => Team.fromJson(team))),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Team>.from(json['data'].map((team) => Team.fromJson(team)))
+          : null,
     );
   }
 }
 
 class PaginatedEvent {
-  PageMeta meta;
-  List<Event> data;
+  PageMeta? meta;
+  List<Event>? data;
 
   PaginatedEvent({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedEvent.fromJson(Map<String, dynamic> json) {
     return PaginatedEvent(
-      meta: PageMeta.fromJson(json['meta']),
-      data:
-          List<Event>.from(json['data'].map((event) => Event.fromJson(event))),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Event>.from(json['data'].map((event) => Event.fromJson(event)))
+          : null,
     );
   }
 }
 
 class PaginatedAward {
-  PageMeta meta;
-  List<Award> data;
+  PageMeta? meta;
+  List<Award>? data;
 
   PaginatedAward({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedAward.fromJson(Map<String, dynamic> json) {
     return PaginatedAward(
-      meta: PageMeta.fromJson(json['meta']),
-      data:
-          List<Award>.from(json['data'].map((award) => Award.fromJson(award))),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Award>.from(json['data'].map((award) => Award.fromJson(award)))
+          : null,
     );
   }
 }
 
 class PaginatedSeason {
-  PageMeta meta;
-  List<Season> data;
+  PageMeta? meta;
+  List<Season>? data;
 
   PaginatedSeason({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedSeason.fromJson(Map<String, dynamic> json) {
     return PaginatedSeason(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<Season>.from(
-        json['data'].map((season) => Season.fromJson(season)),
-      ),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Season>.from(
+              json['data'].map((season) => Season.fromJson(season)),
+            )
+          : null,
     );
   }
 }
 
 class PaginatedRanking {
-  PageMeta meta;
-  List<Ranking> data;
+  PageMeta? meta;
+  List<Ranking>? data;
 
   PaginatedRanking({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedRanking.fromJson(Map<String, dynamic> json) {
     return PaginatedRanking(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<Ranking>.from(
-        json['data'].map((ranking) => Ranking.fromJson(ranking)),
-      ),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Ranking>.from(
+              json['data'].map((ranking) => Ranking.fromJson(ranking)),
+            )
+          : null,
     );
   }
 }
 
 class PaginatedMatch {
-  PageMeta meta;
-  List<MatchObj> data;
+  PageMeta? meta;
+  List<MatchObj>? data;
 
   PaginatedMatch({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedMatch.fromJson(Map<String, dynamic> json) {
     return PaginatedMatch(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<MatchObj>.from(
-        json['data'].map((match) => MatchObj.fromJson(match)),
-      ),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<MatchObj>.from(
+              json['data'].map((match) => MatchObj.fromJson(match)),
+            )
+          : null,
     );
   }
 }
 
 class PaginatedSkill {
-  PageMeta meta;
-  List<Skill> data;
+  PageMeta? meta;
+  List<Skill>? data;
 
   PaginatedSkill({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedSkill.fromJson(Map<String, dynamic> json) {
     return PaginatedSkill(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<Skill>.from(
-        json['data'].map((skill) => Skill.fromJson(skill)),
-      ),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Skill>.from(
+              json['data'].map((skill) => Skill.fromJson(skill)),
+            )
+          : null,
     );
   }
 }
 
 class PaginatedProgram {
-  PageMeta meta;
-  List<Program> data;
+  PageMeta? meta;
+  List<Program>? data;
 
   PaginatedProgram({
-    required this.meta,
-    required this.data,
+    this.meta,
+    this.data,
   });
 
   factory PaginatedProgram.fromJson(Map<String, dynamic> json) {
     return PaginatedProgram(
-      meta: PageMeta.fromJson(json['meta']),
-      data: List<Program>.from(
-        json['data'].map((program) => Program.fromJson(program)),
-      ),
+      meta: json['meta'] != null ? PageMeta.fromJson(json['meta']) : null,
+      data: json['data'] != null
+          ? List<Program>.from(
+              json['data'].map((program) => Program.fromJson(program)),
+            )
+          : null,
     );
   }
 }

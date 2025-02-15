@@ -50,16 +50,18 @@ class Event {
       program: IdInfo.fromJson(json['program']),
       location: Location.fromJson(json['location']),
       locations: json['locations'] != null
-          ? List<Location>.from(
-              json['locations'].map((location) => Location.fromJson(location)))
+          ? List<Location>.from((json['locations'] as Map<String, dynamic>)
+              .values
+              .map((location) => Location.fromJson(location)))
           : null,
       divisions: json['divisions'] != null
           ? List<Division>.from(
               json['divisions'].map((division) => Division.fromJson(division)))
           : null,
       level: json['level'] != null
-          ? EventLevel.values
-              .firstWhere((e) => e.toString().split('.').last == json['level'])
+          ? EventLevel.values.firstWhere((e) =>
+              e.toString().split('.').last ==
+              (json['level'] as String).toLowerCase())
           : null,
       ongoing: json['ongoing'],
       awardsFinalized: json['awards_finalized'],

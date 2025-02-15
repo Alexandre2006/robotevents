@@ -1,7 +1,7 @@
 class Division {
-  int id;
-  String name;
-  int order;
+  int? id;
+  String? name;
+  int? order;
 
   Division(this.id, this.name, this.order);
 

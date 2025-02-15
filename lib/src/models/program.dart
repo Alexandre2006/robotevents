@@ -1,7 +1,7 @@
 class Program {
-  int id;
-  String abbr;
-  String name;
+  int? id;
+  String? abbr;
+  String? name;
 
   Program(this.id, this.abbr, this.name);
 

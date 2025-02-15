@@ -38,11 +38,11 @@ class Team {
       registered: json['registered'],
       program: IdInfo.fromJson(json['program']),
       grade: json['grade'] != null
-          ? json['grade'] == 'college'
+          ? json['grade'] == 'College'
               ? Grade.college
-              : json['grade'] == 'high_school'
+              : json['grade'] == 'High School'
                   ? Grade.highSchool
-                  : json['grade'] == 'middle_school'
+                  : json['grade'] == 'Middle School'
                       ? Grade.middleSchool
                       : Grade.elementarySchool
           : null,

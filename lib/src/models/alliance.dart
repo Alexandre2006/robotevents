@@ -21,14 +21,14 @@ class Alliance {
 }
 
 class AllianceTeam {
-  IdInfo team;
-  bool sitting;
+  IdInfo? team;
+  bool? sitting;
 
-  AllianceTeam({required this.team, required this.sitting});
+  AllianceTeam({this.team, this.sitting});
 
   factory AllianceTeam.fromJson(Map<String, dynamic> json) {
     return AllianceTeam(
-      team: IdInfo.fromJson(json['team']),
+      team: json['team'] != null ? IdInfo.fromJson(json['team']) : null,
       sitting: json['sitting'],
     );
   }

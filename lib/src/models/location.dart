@@ -1,12 +1,12 @@
 class Location {
-  String venue;
-  String address_1;
-  String address_2;
-  String city;
-  String region;
-  String postcode;
-  String country;
-  Coordinates coordinates;
+  String? venue;
+  String? address_1;
+  String? address_2;
+  String? city;
+  String? region;
+  String? postcode;
+  String? country;
+  Coordinates? coordinates;
 
   Location(
     this.venue,
@@ -28,14 +28,16 @@ class Location {
       json['region'],
       json['postcode'],
       json['country'],
-      Coordinates.fromJson(json['coordinates']),
+      json['coordinates'] != null
+          ? Coordinates.fromJson(json['coordinates'])
+          : null,
     );
   }
 }
 
 class Coordinates {
-  double lat;
-  double lon;
+  double? lat;
+  double? lon;
 
   Coordinates(this.lat, this.lon);
 
