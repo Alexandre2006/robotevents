@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:robotevents/src/error.dart';
 import 'package:robotevents/src/models/models.dart';
 import 'package:robotevents/src/utils.dart';
 
@@ -17,6 +18,9 @@ Future<PaginatedEvent> getEventsEndpoint(
   String? region,
   List<EventLevel>? level,
   List<EventType>? type,
+  // Pagination (Optional)
+  int? page,
+  int? limit,
 ) async {
   // Prepare query parameters
   final Map<String, dynamic> queryParameters = {};
@@ -35,17 +39,39 @@ Future<PaginatedEvent> getEventsEndpoint(
     queryParameters['type'] =
         type.map((e) => e.toString().split('.').last).join(',');
   }
+  if (page != null) queryParameters['page'] = page;
+  if (limit != null) queryParameters['per_page'] = limit;
 
   try {
     // Make the request
     final response =
         await client.get('/events', queryParameters: queryParameters);
 
-    // Parse the response on success
+    // Parse the response to JSON
     Map<String, dynamic> json = jsonDecode(response.toString());
-    // DEBUG LOG JSON
-    print(json);
+
+    // Check for an error
+    if (json.containsKey('code') && json['code'] != 0) {
+      throw RobotEventsError(json['code'], json['message']);
+    }
+
     return PaginatedEvent.fromJson(json);
+  } on DioException catch (e) {
+    // Check for an error caused by the RobotEvents API
+    if (e.response != null) {
+      // Try decoding the response to JSON
+      try {
+        Map<String, dynamic> json = jsonDecode(e.response.toString());
+        if (json.containsKey('code') && json['code'] != 0) {
+          throw RobotEventsError(json['code'], json['message']);
+        }
+      } on Exception {
+        // Ignore it, rethrow original error
+      }
+    }
+
+    // Rethrow the error
+    rethrow;
   } on Exception {
     rethrow;
   }

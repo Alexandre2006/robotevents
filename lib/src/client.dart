@@ -41,7 +41,9 @@ class RobotEvents {
     String? region,
     List<EventLevel>? level,
     List<EventType>? type,
+    int page = 1,
+    int limit = 25,
   }) async =>
-      getEventsEndpoint(
-          dioClient, id, sku, team, season, start, end, region, level, type);
+      getEventsEndpoint(dioClient, id, sku, team, season, start, end, region,
+          level, type, page, limit);
 }
