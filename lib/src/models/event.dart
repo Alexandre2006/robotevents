@@ -1,4 +1,5 @@
 import 'package:robotevents/src/models/models.dart';
+import 'package:robotevents/src/utils.dart';
 
 enum EventType { tournament, league, workshop, virtual }
 
@@ -57,9 +58,7 @@ class Event {
               json['divisions'].map((division) => Division.fromJson(division)))
           : null,
       level: json['level'] != null
-          ? EventLevel.values.firstWhere((e) =>
-              e.toString().split('.').last ==
-              (json['level'] as String).toLowerCase())
+          ? convertStringToEventLevel(json['level'])
           : null,
       ongoing: json['ongoing'],
       awardsFinalized: json['awards_finalized'],

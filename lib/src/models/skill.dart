@@ -1,4 +1,7 @@
 import 'package:robotevents/src/models/models.dart';
+import 'package:robotevents/src/utils.dart';
+
+enum SkillType { driver, programming, packageDeliveryTime }
 
 class Skill {
   int? id;
@@ -28,11 +31,8 @@ class Skill {
       id: json['id'],
       event: json['event'] != null ? IdInfo.fromJson(json['event']) : null,
       team: json['team'] != null ? IdInfo.fromJson(json['team']) : null,
-      type: json['type'] == 'driver'
-          ? SkillType.driver
-          : json['type'] == 'programming'
-              ? SkillType.programming
-              : SkillType.packageDeliveryTime,
+      type:
+          json['type'] != null ? convertStringToSkillType(json['type']) : null,
       season: json['season'] != null ? IdInfo.fromJson(json['season']) : null,
       division:
           json['division'] != null ? IdInfo.fromJson(json['division']) : null,
@@ -42,5 +42,3 @@ class Skill {
     );
   }
 }
-
-enum SkillType { driver, programming, packageDeliveryTime }

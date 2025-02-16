@@ -1,4 +1,5 @@
 import 'package:robotevents/src/models/models.dart';
+import 'package:robotevents/src/utils.dart';
 
 enum Grade { college, highSchool, middleSchool, elementarySchool }
 
@@ -36,15 +37,7 @@ class Team {
           json['location'] != null ? Location.fromJson(json['location']) : null,
       registered: json['registered'],
       program: IdInfo.fromJson(json['program']),
-      grade: json['grade'] != null
-          ? json['grade'] == 'College'
-              ? Grade.college
-              : json['grade'] == 'High School'
-                  ? Grade.highSchool
-                  : json['grade'] == 'Middle School'
-                      ? Grade.middleSchool
-                      : Grade.elementarySchool
-          : null,
+      grade: json['grade'] != null ? convertStringToGrade(json['grade']) : null,
     );
   }
 }

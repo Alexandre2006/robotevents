@@ -1,5 +1,7 @@
 import 'package:intl/intl.dart';
+import 'package:robotevents/src/models/models.dart';
 
+// Date Conversion (DateTime <-> RFC3339 String)
 final DateFormat formatString =
     DateFormat("yyyy-MM-ddTHH:mm:ss.SSSSSSSSS+00:00");
 
@@ -11,6 +13,7 @@ String dateTimeToRfc3339(DateTime dateTime) {
   return formatString.format(dateTime.toUtc());
 }
 
+// Enum Conversion (Enum -> RobotEvents API String)
 String convertEventLevelToString(EventLevel eventLevel) {
   switch (eventLevel) {
     case EventLevel.world:
@@ -58,6 +61,7 @@ String convertGradeToString(Grade grade) {
   }
 }
 
+// Enum Conversion (RobotEvents API String -> Enum)
 EventLevel convertStringToEventLevel(String eventLevel) {
   switch (eventLevel) {
     case 'World':
