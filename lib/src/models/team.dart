@@ -1,5 +1,4 @@
-import 'package:robotevents/src/models/id_info.dart';
-import 'package:robotevents/src/models/location.dart';
+import 'package:robotevents/src/models/models.dart';
 
 enum Grade { college, highSchool, middleSchool, elementarySchool }
 

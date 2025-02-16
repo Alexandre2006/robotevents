@@ -1,11 +1,4 @@
-import 'package:robotevents/src/models/award.dart';
-import 'package:robotevents/src/models/event.dart';
-import 'package:robotevents/src/models/match_obj.dart';
-import 'package:robotevents/src/models/program.dart';
-import 'package:robotevents/src/models/ranking.dart';
-import 'package:robotevents/src/models/season.dart';
-import 'package:robotevents/src/models/skill.dart';
-import 'package:robotevents/src/models/team.dart';
+import 'package:robotevents/src/models/models.dart';
 
 class PageMeta {
   int? currentPage;

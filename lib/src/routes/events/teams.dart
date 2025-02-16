@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:robotevents/robotevents.dart';
 import 'package:robotevents/src/error.dart';
 import 'package:robotevents/src/models/models.dart';
-import 'package:robotevents/src/models/pagination.dart';
 
 Future<PaginatedTeam> getTeamsEndpoint(
   // Dio Client (Required)

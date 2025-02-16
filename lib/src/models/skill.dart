@@ -1,4 +1,4 @@
-import 'package:robotevents/src/models/id_info.dart';
+import 'package:robotevents/src/models/models.dart';
 
 class Skill {
   int? id;

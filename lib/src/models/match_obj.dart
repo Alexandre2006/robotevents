@@ -1,5 +1,4 @@
-import 'package:robotevents/src/models/alliance.dart';
-import 'package:robotevents/src/models/id_info.dart';
+import 'package:robotevents/src/models/models.dart';
 
 class MatchObj {
   int id;

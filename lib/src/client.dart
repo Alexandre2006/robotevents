@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:robotevents/src/models/models.dart';
 import 'package:robotevents/src/routes/events/events.dart';
+import 'package:robotevents/src/routes/events/programs.dart';
 import 'package:robotevents/src/routes/events/teams.dart';
 
 class RobotEvents {
@@ -173,4 +174,14 @@ class RobotEvents {
           int page = 1,
           int limit = 25}) async =>
       getTeamAwardsEndpoint(dioClient, id, event, season, page, limit);
+
+  // Programs endpoints
+  Future<PaginatedProgram> getPrograms({
+    List<int>? ids,
+    int page = 1,
+    int limit = 25,
+  }) async =>
+      getProgramsEndpoint(dioClient, ids, page, limit);
+
+  Future<Program> getProgram(int id) async => getProgramEndpoint(dioClient, id);
 }

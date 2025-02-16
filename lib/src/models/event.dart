@@ -1,6 +1,4 @@
-import 'package:robotevents/src/models/division.dart';
-import 'package:robotevents/src/models/id_info.dart';
-import 'package:robotevents/src/models/location.dart';
+import 'package:robotevents/src/models/models.dart';
 
 enum EventType { tournament, league, workshop, virtual }
 
