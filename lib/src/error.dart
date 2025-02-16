@@ -2,7 +2,7 @@ class RobotEventsError extends Error {
   final int? code;
   final String? message;
 
-  RobotEventsError(this.message, this.code);
+  RobotEventsError(this.code, this.message);
 
   @override
   String toString() => 'RobotEventsError: $message (Code: $code)';

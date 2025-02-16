@@ -43,8 +43,8 @@ class Coordinates {
 
   factory Coordinates.fromJson(Map<String, dynamic> json) {
     return Coordinates(
-      json['lat'],
-      json['lon'],
+      (json['lat'] as num).toDouble(),
+      (json['lon'] as num).toDouble(),
     );
   }
 }
