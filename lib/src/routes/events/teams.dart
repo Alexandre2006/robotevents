@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:robotevents/robotevents.dart';
 import 'package:robotevents/src/error.dart';
 import 'package:robotevents/src/models/models.dart';
+import 'package:robotevents/src/utils.dart';
 
 Future<PaginatedTeam> getTeamsEndpoint(
   // Dio Client (Required)
@@ -127,8 +128,8 @@ Future<PaginatedEvent> getTeamEventsEndpoint(
   final Map<String, dynamic> queryParameters = {};
   if (sku != null) queryParameters['sku'] = sku.join(',');
   if (season != null) queryParameters['season'] = season.join(',');
-  if (start != null) queryParameters['start'] = start.toIso8601String();
-  if (end != null) queryParameters['end'] = end.toIso8601String();
+  if (start != null) queryParameters['start'] = dateTimeToRfc3339(start);
+  if (end != null) queryParameters['end'] = dateTimeToRfc3339(end);
   if (level != null)
     queryParameters['level'] = level.map((e) => e.name).join(',');
   if (page != null) queryParameters['page'] = page;

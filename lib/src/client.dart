@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:robotevents/src/models/models.dart';
 import 'package:robotevents/src/routes/events/events.dart';
 import 'package:robotevents/src/routes/events/programs.dart';
+import 'package:robotevents/src/routes/events/seasons.dart';
 import 'package:robotevents/src/routes/events/teams.dart';
 
 class RobotEvents {
@@ -184,4 +185,30 @@ class RobotEvents {
       getProgramsEndpoint(dioClient, ids, page, limit);
 
   Future<Program> getProgram(int id) async => getProgramEndpoint(dioClient, id);
+
+  // Seasons endpoints
+  Future<PaginatedSeason> getSeasons(
+          {List<int>? id,
+          List<int>? program,
+          List<int>? team,
+          DateTime? start,
+          DateTime? end,
+          bool? active,
+          int page = 1,
+          int limit = 25}) async =>
+      getSeasonsEndpoint(
+          dioClient, id, program, team, start, end, active, page, limit);
+
+  Future<Season> getSeason(int id) async => getSeasonEndpoint(dioClient, id);
+
+  Future<PaginatedEvent> getSeasonEvents(int id,
+          {List<String>? sku,
+          List<int>? team,
+          DateTime? start,
+          DateTime? end,
+          List<EventLevel>? level,
+          int page = 1,
+          int limit = 25}) async =>
+      getSeasonEventsEndpoint(
+          dioClient, id, sku, team, start, end, level, page, limit);
 }
