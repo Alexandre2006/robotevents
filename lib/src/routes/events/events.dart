@@ -33,12 +33,10 @@ Future<PaginatedEvent> getEventsEndpoint(
   if (end != null) queryParameters['end'] = dateTimeToRfc3339(end);
   if (region != null) queryParameters['region'] = region;
   if (level != null) {
-    queryParameters['level'] =
-        level.map((e) => e.toString().split('.').last).join(',');
+    queryParameters['level'] = level.map((e) => convertEventLevelToString(e)).join(',');
   }
   if (type != null) {
-    queryParameters['type'] =
-        type.map((e) => e.toString().split('.').last).join(',');
+    queryParameters['type'] = type.map((e) => e.toString().split('.').last).join(',');
   }
   if (page != null) queryParameters['page'] = page;
   if (limit != null) queryParameters['per_page'] = limit;
@@ -136,8 +134,7 @@ Future<PaginatedTeam> getEventTeamsEndpoint(
   if (number != null) queryParameters['number'] = number.join(',');
   if (registered != null) queryParameters['registered'] = registered;
   if (grade != null) {
-    queryParameters['grade'] =
-        grade.map((e) => e.toString().split('.').last).join(',');
+    queryParameters['grade'] = grade.map((e) => convertGradeToString(e)).join(',');
   }
   if (country != null) queryParameters['country'] = country.join(',');
   if (page != null) queryParameters['page'] = page;
@@ -195,8 +192,7 @@ Future<PaginatedSkill> getEventSkillsEndpoint(
   final Map<String, dynamic> queryParameters = {};
   if (team != null) queryParameters['team'] = team.join(',');
   if (type != null) {
-    queryParameters['type'] =
-        type.map((e) => e.toString().split('.').last).join(',');
+    queryParameters['type'] = type.map((e) => convertSkillTypeToString(e)).join(',');
   }
   if (page != null) queryParameters['page'] = page;
   if (limit != null) queryParameters['per_page'] = limit;

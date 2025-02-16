@@ -29,7 +29,7 @@ Future<PaginatedTeam> getTeamsEndpoint(
   if (registered != null) queryParameters['registered'] = registered;
   if (program != null) queryParameters['program'] = program.join(',');
   if (grade != null) {
-    queryParameters['grade'] = grade.map((e) => e.name).join(',');
+    queryParameters['grade'] = grade.map((e) => convertGradeToString(e)).join(',');
   }
   if (country != null) queryParameters['country'] = country.join(',');
   if (page != null) queryParameters['page'] = page;
@@ -130,8 +130,9 @@ Future<PaginatedEvent> getTeamEventsEndpoint(
   if (season != null) queryParameters['season'] = season.join(',');
   if (start != null) queryParameters['start'] = dateTimeToRfc3339(start);
   if (end != null) queryParameters['end'] = dateTimeToRfc3339(end);
-  if (level != null)
-    queryParameters['level'] = level.map((e) => e.name).join(',');
+  if (level != null) {
+    queryParameters['level'] = level.map((e) => convertEventLevelToString(e)).join(',');
+  }
   if (page != null) queryParameters['page'] = page;
   if (limit != null) queryParameters['per_page'] = limit;
 
@@ -302,7 +303,9 @@ Future<PaginatedSkill> getTeamSkillsEndpoint(
   // Prepare query parameters
   final Map<String, dynamic> queryParameters = {};
   if (event != null) queryParameters['event'] = event.join(',');
-  if (type != null) queryParameters['type'] = type.map((e) => e.name).join(',');
+  if (type != null) {
+    queryParameters['type'] = type.map((e) => convertSkillTypeToString(e)).join(',');
+  }
   if (season != null) queryParameters['season'] = season.join(',');
   if (page != null) queryParameters['page'] = page;
   if (limit != null) queryParameters['per_page'] = limit;
