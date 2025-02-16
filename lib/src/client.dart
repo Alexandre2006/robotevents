@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:robotevents/src/models/models.dart';
 import 'package:robotevents/src/routes/events/events.dart';
+import 'package:robotevents/src/routes/events/teams.dart';
 
 class RobotEvents {
-  late final dioClient;
+  late final Dio dioClient;
 
   // Constructor
   RobotEvents(String apiKey) {
@@ -110,4 +111,66 @@ class RobotEvents {
     int limit = 25,
   }) async =>
       getEventRankingsEndpoint(dioClient, id, div, team, rank, page, limit);
+
+  // Teams endpoints
+  Future<PaginatedTeam> getTeams({
+    List<int>? id,
+    List<String>? number,
+    List<int>? event,
+    bool? registered,
+    List<int>? program,
+    List<Grade>? grade,
+    List<String>? country,
+    page = 1,
+    limit = 25,
+  }) async =>
+      getTeamsEndpoint(dioClient, id, number, event, registered, program, grade,
+          country, page, limit);
+
+  Future<Team> getTeam(int id) async => getTeamEndpoint(dioClient, id);
+
+  Future<PaginatedEvent> getTeamEvents(int id,
+          {List<String>? sku,
+          List<int>? season,
+          DateTime? start,
+          DateTime? end,
+          List<EventLevel>? level,
+          int page = 1,
+          int limit = 25}) async =>
+      getTeamEventsEndpoint(
+          dioClient, id, sku, season, start, end, level, page, limit);
+
+  Future<PaginatedMatch> getTeamMatches(int id,
+          {List<int>? event,
+          List<int>? season,
+          List<int>? round,
+          List<int>? instance,
+          List<int>? matchnum,
+          int page = 1,
+          int limit = 25}) async =>
+      getTeamMatchesEndpoint(
+          dioClient, id, event, season, round, instance, matchnum, page, limit);
+
+  Future<PaginatedRanking> getTeamRankings(int id,
+          {List<int>? event,
+          List<int>? rank,
+          List<int>? season,
+          int page = 1,
+          int limit = 25}) async =>
+      getTeamRankingsEndpoint(dioClient, id, event, rank, season, page, limit);
+
+  Future<PaginatedSkill> getTeamSkills(int id,
+          {List<int>? event,
+          List<SkillType>? type,
+          List<int>? season,
+          int page = 1,
+          int limit = 25}) async =>
+      getTeamSkillsEndpoint(dioClient, id, event, type, season, page, limit);
+
+  Future<PaginatedAward> getTeamAwards(int id,
+          {List<int>? event,
+          List<int>? season,
+          int page = 1,
+          int limit = 25}) async =>
+      getTeamAwardsEndpoint(dioClient, id, event, season, page, limit);
 }
